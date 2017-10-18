@@ -1,0 +1,6 @@
+#Database
+myblog/db.sqlite3
+
+#Byte-compiled
+myblog/myblog/__pycache__/
+*.pyc
