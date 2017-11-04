@@ -23,7 +23,7 @@ class HomePageTests(TestCase):
     """Test whether out blog entries show up on the homepage"""
     def setUp(self):
         self.user = get_user_model().objects.create(username='some_user')
-
+    
     def test_one_entry(self):
         Entry.objects.create(title='1-title', body='1-body', author=self.user)
         response = self.client.get('/')
