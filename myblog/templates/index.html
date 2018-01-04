@@ -2,18 +2,8 @@
 
 {% block content %}
     {% for entry in entry_list %}
-        <article>
-
-            <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
-    
-            <p class="subheader">
-                <time>{{ entry.modified_at|date }}</time>
-            </p>
-
-            <p></p>
-
-            {{ entry.body|linebreaks }}
-
-        </article>
+        {% include "_entry.html" with entry=entry only %}
+    {% empty %}
+        <p>No blog entries yet.</p>
     {% endfor %}
 {% endblock content %}
