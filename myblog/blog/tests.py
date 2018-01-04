@@ -41,4 +41,17 @@ class HomePageTests(TestCase):
     def test_no_entries(self):
         response = self.client.get('/')
         self.assertContains(response, 'No blog entries yet.')
+
+
+class EntryViewTest(TestCase):
+    
+    def setUp(self):
+        self.user = get_user_model().objects.create(username='some_user')
+        self.entry = Entry.objects.create(title='1-title', body='1-body', author=self.user)
+
+    def test_basic_view(self):
+        response = self.client.get(self.entry.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+
+
          
