@@ -73,3 +73,6 @@ class EntryViewTest(TestCase):
         response = self.client.get(self.entry.get_absolute_url())
         self.assertContains(response, self.entry.body)
          
+    def test_comment_in_entry(self):
+        response = self.client.get(self.entry.get_absolute_url())
+        self.assertContains(response,"No comments yet.")

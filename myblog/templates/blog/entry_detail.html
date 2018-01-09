@@ -2,7 +2,6 @@
 
 {% block content %}
     {% include "_entry.html" with entry=entry only %}
-{% endblock %}
 
 <hr>
 <h4>Comments</h4>
@@ -12,4 +11,7 @@
 {% empty %}
     No comments yet.
 {% endfor %}
+
+
+{% endblock %}
     
