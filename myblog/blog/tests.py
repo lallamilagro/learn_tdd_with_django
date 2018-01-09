@@ -1,6 +1,9 @@
 from django.test import TestCase
-from .models import Entry, Comment
 from django.contrib.auth import get_user_model
+
+from .forms import CommentForm
+from .models import Entry, Comment
+
 
 class EntryModelTest(TestCase):
 
@@ -76,3 +79,17 @@ class EntryViewTest(TestCase):
     def test_comment_in_entry(self):
         response = self.client.get(self.entry.get_absolute_url())
         self.assertContains(response,"No comments yet.")
+
+
+class CommentFormTest(TestCase):
+
+    def setUP(self):
+        user = get_user_model().objects.create_user('zoidberg')
+        self.entry = Entry.objects.create(author=user, title="My entry title")
+
+    def test_init(self):
+        CommentForm(entry=self.entry)
+
+    def test_init_without_entry(self):
+        with self.assertRaises(KeyError):
+            CommentForm()
