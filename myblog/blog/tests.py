@@ -84,8 +84,8 @@ class EntryViewTest(TestCase):
 class CommentFormTest(TestCase):
 
     def setUP(self):
-        user = get_user_model().objects.create_user('zoidberg')
-        self.entry = Entry.objects.create(author=user, title="My entry title")
+        self.user = get_user_model().objects.create_user('zoidberg')
+        self.entry = Entry.objects.create(author=self.user, title="My entry title")
 
     def test_init(self):
         CommentForm(entry=self.entry)
